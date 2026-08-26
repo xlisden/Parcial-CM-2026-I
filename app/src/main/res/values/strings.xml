@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Parcial2026I</string>
+    <string name="tittle">Registrar Trabajador</string>
+    <string name="code">Codigo</string>
+    <string name="code_example">0002221064</string>
+    <string name="first_name">Primer Nombre</string>
+    <string name="first_name_example">Dayenira</string>
+    <string name="has_second_name">Tengo segundo nombre</string>
+    <string name="second_name">Segundo Nombre</string>
+    <string name="second_name_example">no</string>
+    <string name="age">Edad</string>
+    <string name="age_example">21</string>
+    <string name="last_name">Apellido Paterno</string>
+    <string name="last_name_example">Delgado</string>
+    <string name="last_name2">Apellido Materno</string>
+    <string name="last_name2_example">Esteban</string>
+    <string name="area">Area</string>
+    <string name="register">Registrar</string>
+    <string name="rol">Cargo</string>
+</resources>
