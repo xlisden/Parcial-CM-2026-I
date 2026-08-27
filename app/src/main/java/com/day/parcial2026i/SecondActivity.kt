@@ -23,6 +23,7 @@ class SecondActivity : AppCompatActivity() {
         val firstName = intent.getStringExtra(NAME_KEY)
         val lsatName = intent.getStringExtra(LAST_NAME_KEY)
 
-        tvMessage.text = "Bien hecho" + firstName+ lsatName
+        tvMessage.text = "Bien hecho" + firstName + lsatName
+        // aqui era para llamar a otoroso text vierw
     }
 }
