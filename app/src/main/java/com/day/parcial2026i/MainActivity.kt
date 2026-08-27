@@ -17,21 +17,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import kotlin.collections.listOf
+import kotlin.compareTo
+import kotlin.toString
 
 class MainActivity : AppCompatActivity() {
-
-    val etCode = findViewById<EditText>(R.id.et_code)
-    val etFirstName = findViewById<EditText>(R.id.et_first_name)
-    val chkSecondName = findViewById<CheckBox>(R.id.chk_second_name)
-    val etSecondName = findViewById<EditText>(R.id.et_second_name)
-    val etLastName = findViewById<EditText>(R.id.et_last_name)
-    val etLastName2 = findViewById<EditText>(R.id.et_last_name2)
-    val etAge = findViewById<EditText>(R.id.et_age)
-    val spArea = findViewById<Spinner>(R.id.sp_area)
-    val tvRol = findViewById<TextView>(R.id.tv_rol)
-    val rgRol = findViewById<RadioGroup>(R.id.rg_rol)
-    val btnRegister = findViewById<Button>(R.id.btn_register)
-    var isSelectedRol = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +34,19 @@ class MainActivity : AppCompatActivity() {
 
         var firstName = ""
         var lastName = ""
+
+        val etCode = findViewById<EditText>(R.id.et_code)
+        val etFirstName = findViewById<EditText>(R.id.et_first_name)
+        val chkSecondName = findViewById<CheckBox>(R.id.chk_second_name)
+        val etSecondName = findViewById<EditText>(R.id.et_second_name)
+        val etLastName = findViewById<EditText>(R.id.et_last_name)
+        val etLastName2 = findViewById<EditText>(R.id.et_last_name2)
+        val etAge = findViewById<EditText>(R.id.et_age)
+        val spArea = findViewById<Spinner>(R.id.sp_area)
+        val tvRol = findViewById<TextView>(R.id.tv_rol)
+        val rgRol = findViewById<RadioGroup>(R.id.rg_rol)
+        val btnRegister = findViewById<Button>(R.id.btn_register)
+        var isSelectedRol = false
 
         val areas = listOf("-", "Contabilidad", "RR.HH.", "Gerencia")
         val rolList = mapOf(
@@ -64,6 +66,7 @@ class MainActivity : AppCompatActivity() {
 
         val adapterAreas = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, areas)
         spArea.adapter = adapterAreas
+
 
         tvRol.visibility = View.GONE
         rgRol.visibility = View.GONE
@@ -108,17 +111,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnRegister.setOnClickListener {
-
+            val isValid = !etCode.text.isEmpty() && !etFirstName.text.isEmpty() && !etLastName.text.isEmpty() && !etLastName2.text.isEmpty() &&
+                    (!etAge.text.isEmpty() && Integer.parseInt(etAge.text.toString()) > 0) &&
+                    spArea.selectedItemPosition > 0 && isSelectedRol
         }
 
     }
 
-    private fun isValid(): Boolean{
-        val isValid = !etCode.text.isEmpty() && !etFirstName.text.isEmpty() && !etLastName.text.isEmpty() && !etLastName2.text.isEmpty() &&
-                (!etAge.text.isEmpty() && Integer.parseInt(etAge.text.toString()) > 0) &&
-                spArea.selectedItemPosition > 0 && isSelectedRol
-        return isValid
-    }
 
 }
 
