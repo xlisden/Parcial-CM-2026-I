@@ -1,5 +1,6 @@
 package com.day.parcial2026i
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -14,18 +15,23 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.PathUtils
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.day.parcial2026i.databinding.ActivityMainBinding
 import kotlin.collections.listOf
 import kotlin.compareTo
 import kotlin.toString
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -111,9 +117,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnRegister.setOnClickListener {
-            val isValid = !etCode.text.isEmpty() && !etFirstName.text.isEmpty() && !etLastName.text.isEmpty() && !etLastName2.text.isEmpty() &&
-                    (!etAge.text.isEmpty() && Integer.parseInt(etAge.text.toString()) > 0) &&
-                    spArea.selectedItemPosition > 0 && isSelectedRol
+//            val isValid = !etCode.text.isEmpty() && !etFirstName.text.isEmpty() && !etLastName.text.isEmpty() && !etLastName2.text.isEmpty() &&
+//                    (!etAge.text.isEmpty() && Integer.parseInt(etAge.text.toString()) > 0) &&
+//                    spArea.selectedItemPosition > 0 && isSelectedRol
+//            if (isValid) {
+//
+//            }
+            firstName = etFirstName.text.toString()
+            lastName = etLastName.toString()
+            Intent(this, SecondActivity::class.java).apply {
+                putExtra(NAME_KEY, firstName)
+                putExtra(LAST_NAME_KEY, lastName)
+            }
         }
 
     }
