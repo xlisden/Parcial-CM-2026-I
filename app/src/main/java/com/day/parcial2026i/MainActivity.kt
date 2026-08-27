@@ -125,10 +125,11 @@ class MainActivity : AppCompatActivity() {
 //            }
             firstName = etFirstName.text.toString()
             lastName = etLastName.toString()
-            Intent(this, SecondActivity::class.java).apply {
+            val intent = Intent(this, SecondActivity::class.java).apply {
                 putExtra(NAME_KEY, firstName)
                 putExtra(LAST_NAME_KEY, lastName)
             }
+            startActivity(intent)
         }
 
     }
